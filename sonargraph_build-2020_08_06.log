@@ -1,0 +1,30 @@
+2020-08-06 23:14:55,025 WARN [Start Level: Equinox Container: cc232993-6b3c-44a1-979b-7937ca71adf2] com.hello2morrow.sonargraph.plugin.manager.impl.FelixScr Bundle 'org.apache.felix.log' needed by PluginManager not found.
+2020-08-06 23:14:55,452 INFO [Start Level: Equinox Container: cc232993-6b3c-44a1-979b-7937ca71adf2] com.hello2morrow.sonargraph.plugin.manager.impl.SonargraphPluginManager Loading plugins from directory '/Users/ilja/Library/Application Support/hello2morrow/Sonargraph/plugins'
+2020-08-06 23:14:55,566 INFO [SonargraphBuild] com.hello2morrow.sonargraph.build.application.a Operating System:         Mac 64 bit 
+2020-08-06 23:14:55,567 INFO [SonargraphBuild] com.hello2morrow.sonargraph.build.application.a Operating System Name:    Mac OS X
+2020-08-06 23:14:55,567 INFO [SonargraphBuild] com.hello2morrow.sonargraph.build.application.a Operating System Version: 10.14.6
+2020-08-06 23:14:55,567 INFO [SonargraphBuild] com.hello2morrow.sonargraph.build.application.a Java Vendor:              ORACLE
+2020-08-06 23:14:55,567 INFO [SonargraphBuild] com.hello2morrow.sonargraph.build.application.a Java Version:             null
+2020-08-06 23:14:55,567 INFO [SonargraphBuild] com.hello2morrow.sonargraph.build.application.a JRE  Version:             12.0.2
+2020-08-06 23:14:55,627 INFO [SonargraphBuild] com.hello2morrow.foundation.logback.LogFileAccessor Setting log level to 'info'
+2020-08-06 23:15:01,327 INFO [SonargraphBuild] com.hello2morrow.sonargraph.client.eclipse.application.EclipseApplication Licensed features [Explorer]: PLATFORM SYSTEMS REPORTING
+2020-08-06 23:15:01,328 WARN [SonargraphBuild] com.hello2morrow.sonargraph.client.eclipse.application.a Language 'CPlusPlus' is not defined: Bundles will be uninstalled for this language.
+2020-08-06 23:15:01,532 INFO [SonargraphBuild] com.hello2morrow.sonargraph.client.eclipse.application.a Uninstalled bundle: com.hello2morrow.sonargraph.language.provider.cplusplus
+2020-08-06 23:15:01,618 WARN [SonargraphBuild] com.hello2morrow.sonargraph.client.eclipse.application.a Language 'CSharp' is not defined: Bundles will be uninstalled for this language.
+2020-08-06 23:15:01,620 INFO [SonargraphBuild] com.hello2morrow.sonargraph.client.eclipse.application.a Uninstalled bundle: com.hello2morrow.sonargraph.language.provider.csharp
+2020-08-06 23:15:01,620 WARN [SonargraphBuild] com.hello2morrow.sonargraph.client.eclipse.application.a Language 'Python' is not defined: Bundles will be uninstalled for this language.
+2020-08-06 23:15:01,621 INFO [SonargraphBuild] com.hello2morrow.sonargraph.client.eclipse.application.a Uninstalled bundle: com.hello2morrow.sonargraph.language.provider.python
+2020-08-06 23:15:01,621 INFO [SonargraphBuild] com.hello2morrow.sonargraph.client.eclipse.application.a License feature 'PLUGINS' missing, uninstalling Plugin Manager...
+2020-08-06 23:15:01,626 INFO [SonargraphBuild] com.hello2morrow.sonargraph.client.eclipse.application.a Plugin Manager uninstalled
+2020-08-06 23:15:01,997 INFO [Command Executor] com.hello2morrow.sonargraph.integration.access.persistence.JaxbAdapter Using JAXBContext implementation: com.sun.xml.bind.v2.runtime.JAXBContextImpl
+2020-08-06 23:15:02,124 INFO [main] com.hello2morrow.sonargraph.build.e.a.d Open software system 'gilded-rose-kata.sonargraph'
+2020-08-06 23:15:02,321 INFO [Command Executor] com.hello2morrow.sonargraph.build.ui.a Success: Opening system
+2020-08-06 23:15:02,343 INFO [main] com.hello2morrow.sonargraph.build.e.a.d Parsing software system.
+2020-08-06 23:15:02,351 INFO [Command Executor] com.hello2morrow.sonargraph.build.ui.a Options: [REFRESH_PARSER_MODEL]
+Parser model refresh possible for: [Java]
+
+2020-08-06 23:15:02,501 INFO [Command Executor] com.hello2morrow.sonargraph.core.controller.system.SoftwareSystemController Perform refresh - done in 139 ms
+2020-08-06 23:15:02,635 INFO [Command Executor] com.hello2morrow.sonargraph.build.ui.a Success: Refresh
+2020-08-06 23:15:02,663 INFO [main] com.hello2morrow.sonargraph.build.e.a.d Writing report to directory: /Users/ilja/IdeaProjects/Gilded_RoseJava/target/sonargraph
+2020-08-06 23:15:02,670 INFO [Command Executor] com.hello2morrow.sonargraph.core.controller.system.ReportExtension Creating report with active analyzer execution level Full
+2020-08-06 23:15:04,101 INFO [main] com.hello2morrow.sonargraph.build.e.a.d Successfully closed system.
