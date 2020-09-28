@@ -202,11 +202,43 @@ public class GildedRoseTest {
         assertThat(app.items[0].quality).isEqualTo(0);
     }
 
-    @Ignore
     @Test
-    public void conjuredItems() {
-        String name = "Conjured";
+    public void conjuredItemQuality() {
+        String name = "conjured";
         ItemType[] items = new ItemType[] { new ConjuredItem(name, 1, 2) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThat(app.items[0].quality).isEqualTo(0);
+    }
+
+    @Test
+    public void conjuredItemQualityInAfterQualityExpiration() {
+        String name = "conjured";
+        ItemType[] items = new ItemType[] { new ConjuredItem(name, 0, 2) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThat(app.items[0].quality).isEqualTo(0);
+    }
+
+    @Test
+    public void conjuredItemSellIn() {
+        String name = "conjured";
+        ItemType[] items = new ItemType[] { new ConjuredItem(name, 1, 1) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThat(app.items[0].sellIn).isEqualTo(0);
+    }
+
+    @Test
+    public void conjuredQualityInAfterQualityExpirationIsNeverNegative() {
+        String name = "conjured";
+        ItemType[] items = new ItemType[] { new ConjuredItem(name, 0, 1) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();

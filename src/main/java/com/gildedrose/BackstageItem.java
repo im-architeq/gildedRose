@@ -8,21 +8,22 @@ public class BackstageItem extends ItemType {
 
     @Override
     void updateItem() {
-        if (quality < 50) {
+        if (sellIn <= 0) {
+            quality = 0;
+            return;
+        }
+        if (quality >= 50) {
+            quality = 50;
+            return;
+        }
+        if (sellIn >= 11) {
             quality = quality + 1;
-            if (sellIn < 11) {
-                if (quality < 50) {
-                    quality = quality + 1;
-                }
-            }
-            if (sellIn < 6) {
-                if (quality < 50) {
-                    quality = quality + 1;
-                }
-            }
-            if (sellIn <= 0) {
-                quality = 0;
-            }
+        }
+        if (sellIn < 11 && sellIn > 5) {
+            quality = quality + 2;
+        }
+        if (sellIn <= 5) {
+            quality = quality + 3;
         }
         sellIn = sellIn - 1;
     }
