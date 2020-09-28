@@ -10,7 +10,7 @@ public class GildedRoseTest {
     @Test
     public void itemName() {
         String name = "foo";
-        Item[] items = new Item[] { new Item(name, 1, 1) };
+        ItemType[] items = new ItemType[] { new StandardItem(name, 1, 1) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -21,7 +21,18 @@ public class GildedRoseTest {
     @Test
     public void standardItemQuality() {
         String name = "foo";
-        Item[] items = new Item[] { new Item(name, 1, 1) };
+        ItemType[] items = new ItemType[] { new StandardItem(name, 1, 1) };
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertThat(app.items[0].quality).isEqualTo(0);
+    }
+
+    @Test
+    public void standardItemQualityInAfterQualityExpiration() {
+        String name = "foo";
+        ItemType[] items = new ItemType[] { new StandardItem(name, 0, 2) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -32,7 +43,7 @@ public class GildedRoseTest {
     @Test
     public void standardItemSellIn() {
         String name = "foo";
-        Item[] items = new Item[] { new Item(name, 1, 1) };
+        ItemType[] items = new ItemType[] { new StandardItem(name, 1, 1) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -41,20 +52,9 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void standardItemQualityInAfterQualityExpiration() {
-        String name = "foo";
-        Item[] items = new Item[] { new Item(name, 0, 2) };
-        GildedRose app = new GildedRose(items);
-
-        app.updateQuality();
-
-        assertThat(app.items[0].quality).isEqualTo(0);
-    }
-
-    @Test
     public void standardItemQualityInAfterQualityExpirationIsNeverNegative() {
         String name = "foo";
-        Item[] items = new Item[] { new Item(name, 0, 1) };
+        ItemType[] items = new ItemType[] { new StandardItem(name, 0, 1) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -65,7 +65,7 @@ public class GildedRoseTest {
     @Test
     public void agedBrieQualityIncreasingWithPositiveSellIn() {
         String name = "Aged Brie";
-        Item[] items = new Item[] { new Item(name, 1, 0) };
+        ItemType[] items = new ItemType[] { new AgedBrieItem(name, 1, 0) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -76,7 +76,7 @@ public class GildedRoseTest {
     @Test
     public void agedBrieQualityIncreasingWithZeroSellIn() {
         String name = "Aged Brie";
-        Item[] items = new Item[] { new Item(name, 0, 0) };
+        ItemType[] items = new ItemType[] { new AgedBrieItem(name, 0, 0) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -87,7 +87,7 @@ public class GildedRoseTest {
     @Test
     public void agedBrieQualityIncreasingWithNegativeSellIn() {
         String name = "Aged Brie";
-        Item[] items = new Item[] { new Item(name, -1, 0) };
+        ItemType[] items = new ItemType[] { new AgedBrieItem(name, -1, 0) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -100,12 +100,12 @@ public class GildedRoseTest {
         int maxQuality = 50;
 
         String name = "Aged Brie";
-        Item[] items = new Item[] { new Item(name, -1, 49) };
+        ItemType[] items = new ItemType[] { new AgedBrieItem(name, -1, 49) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
 
-        assertThat(app.items[0].quality).isEqualTo(50);
+        assertThat(app.items[0].quality).isEqualTo(maxQuality);
     }
 
     @Test
@@ -113,12 +113,12 @@ public class GildedRoseTest {
         int maxQuality = 50;
 
         String name = "Aged Brie";
-        Item[] items = new Item[] { new Item(name, -1, 50) };
+        ItemType[] items = new ItemType[] { new AgedBrieItem(name, -1, maxQuality) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
 
-        assertThat(app.items[0].quality).isEqualTo(50);
+        assertThat(app.items[0].quality).isEqualTo(maxQuality);
     }
 
     @Test
@@ -126,7 +126,7 @@ public class GildedRoseTest {
         int sulfurasPermanentQuality = 80;
 
         String name = "Sulfuras, Hand of Ragnaros";
-        Item[] items = new Item[]{new Item(name, 0, sulfurasPermanentQuality)};
+        ItemType[] items = new ItemType[]{new SulfurasItem(name, 0, sulfurasPermanentQuality)};
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -139,7 +139,7 @@ public class GildedRoseTest {
         int sulfurasPermanentQuality = 80;
 
         String name = "Sulfuras, Hand of Ragnaros";
-        Item[] items = new Item[] { new Item(name, 0, sulfurasPermanentQuality) };
+        ItemType[] items = new ItemType[] { new SulfurasItem(name, 0, sulfurasPermanentQuality) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -150,7 +150,7 @@ public class GildedRoseTest {
     @Test
     public void backstagePassesWithSellInGreater10Days() {
         String name = "Backstage passes to a TAFKAL80ETC concert";
-        Item[] items = new Item[] { new Item(name, 11, 10) };
+        ItemType[] items = new ItemType[] { new BackstageItem(name, 11, 10) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -161,7 +161,7 @@ public class GildedRoseTest {
     @Test
     public void backstagePassesWithSellInEquals10Days() {
         String name = "Backstage passes to a TAFKAL80ETC concert";
-        Item[] items = new Item[] { new Item(name, 10, 10) };
+        ItemType[] items = new ItemType[] { new BackstageItem(name, 10, 10) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -172,7 +172,7 @@ public class GildedRoseTest {
     @Test
     public void backstagePassesWithSellInSmaller5Days() {
         String name = "Backstage passes to a TAFKAL80ETC concert";
-        Item[] items = new Item[] { new Item(name, 5, 10) };
+        ItemType[] items = new ItemType[] { new BackstageItem(name, 5, 10) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -183,7 +183,7 @@ public class GildedRoseTest {
     @Test
     public void backstagePassesWithSellInZero() {
         String name = "Backstage passes to a TAFKAL80ETC concert";
-        Item[] items = new Item[] { new Item(name, 0, 10) };
+        ItemType[] items = new ItemType[] { new BackstageItem(name, 0, 10) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -194,7 +194,7 @@ public class GildedRoseTest {
     @Test
     public void backstagePassesWithSellInNegative() {
         String name = "Backstage passes to a TAFKAL80ETC concert";
-        Item[] items = new Item[] { new Item(name, -1, 10) };
+        ItemType[] items = new ItemType[] { new BackstageItem(name, -1, 10) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -206,7 +206,7 @@ public class GildedRoseTest {
     @Test
     public void conjuredItems() {
         String name = "Conjured";
-        Item[] items = new Item[] { new Item(name, 1, 2) };
+        ItemType[] items = new ItemType[] { new ConjuredItem(name, 1, 2) };
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
