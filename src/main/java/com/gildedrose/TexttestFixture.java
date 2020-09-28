@@ -4,17 +4,17 @@ public class TexttestFixture {
     public static void main(String[] args) {
         System.out.println("OMGHAI!");
 
-        ItemType[] items = new ItemType[] {
+        ItemType[] items = new ItemType[]{
                 new StandardItem("+5 Dexterity Vest", 10, 20), //
-                new AgedBrieItem("Aged Brie", 2, 0), //
+                new AgedBrieItem(2, 0), //
                 new StandardItem("Elixir of the Mongoose", 5, 7), //
-                new SulfurasItem("Sulfuras, Hand of Ragnaros", 0, 80), //
-                new SulfurasItem("Sulfuras, Hand of Ragnaros", -1, 80),
-                new BackstageItem("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-                new BackstageItem("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-                new BackstageItem("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+                new SulfurasItem(0, 80), //
+                new SulfurasItem(-1, 80),
+                new BackstageItem(15, 20),
+                new BackstageItem(10, 49),
+                new BackstageItem(5, 49),
                 // this conjured item does not work properly yet
-                new ConjuredItem("Conjured Mana Cake", 3, 6) };
+                new ConjuredItem("Conjured Mana Cake", 3, 6)};
 
         GildedRose app = new GildedRose(items);
 

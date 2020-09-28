@@ -2,8 +2,8 @@ package com.gildedrose;
 
 public class BackstageItem extends ItemType {
 
-    public BackstageItem(String name, int sellIn, int quality) {
-        super(name, sellIn, quality);
+    public BackstageItem( int sellIn, int quality) {
+        super("Backstage passes to a TAFKAL80ETC concert", sellIn, quality);
     }
 
     @Override

@@ -2,8 +2,8 @@ package com.gildedrose;
 
 public class SulfurasItem extends ItemType {
 
-    public SulfurasItem(String name, int sellIn, int quality) {
-        super(name, sellIn, quality);
+    public SulfurasItem(int sellIn, int quality) {
+        super("Sulfuras, Hand of Ragnaros", sellIn, quality);
     }
 
     @Override
